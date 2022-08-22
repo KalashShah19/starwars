@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title> Star Wars </title>
+    <link rel="icon" type="image/x-icon" href="starwars.png">
+    <style>
+        button:hover {
+            color: white;
+            background-color: rgb(0, 0, 46);
+        }
+        
+        table,td,tr {
+            text-align: center;
+            border: 1px solid white;
+            margin: auto;
+            font-size: large;
+        }
+
+        body {
+            background-image: url(bg.jpg);
+            background-position: initial;
+            background-size: cover;
+            text-align: center;
+            color: white;
+            font-size: large;
+        }
+        
+        input {
+            height: 40px;
+        }
+        
+        .image {
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"> </script>
+    <script>
+        $(document).ready(function() 
+        {
+            $("button").on("click", function() 
+            {
+                const url = "https://akabab.github.io/starwars-api/api/id/";
+                const num = Math.ceil(Math.random() * 88);
+                const link = url + num + ".json";
+                // alert(link);
+                $.get('https://akabab.github.io/starwars-api/api/id/' + num + '.json' , function(data) 
+                {
+                    console.log(data);
+                    $(".img").attr("src",data['image'])
+                    $("#name").text(data['name'])
+                    $("#eye").text(data['eyeColor'])
+                    $("#skin").text(data['skinColor'])
+                    $("#species").text(data['species'])
+                    $("#id").text(data['id'])
+                    $("#gender").text(data['gender'])
+                    $("#home").text(data['homeworld'])
+                    $("#height").text(data['height'])
+                    $("title").text("STAR WARS | "+data['name'])
+                })
+
+            })
+
+        })
+    </script>
+
+<div class="main">
+    <img src="logo.png" alt="STAR WARS"> <br> <br> <br>
+    <button style="font-size: larger; width: auto;"> Find Random Character </button>
+    <br><br>
+    <h2>
+        Character Information :- <br> 
+    </h2>
+    <div class="image">
+        <img style="border: 1px solid white;" class="img" src="char.jpg" alt="Character Image" width="200" height="auto"> <br> <br>
+    </div>
+    <table>
+        <tr>
+            <td>
+                    Name -> 
+            </td>
+            <td>
+                <p id="name">  </p>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    ID ->
+                </td>
+                <td>
+                    <p id="id">  </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender ->
+                </td>
+                <td>
+                    <p id="gender">  </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Species -> 
+                </td>
+                <td>
+                    <p id="species"> </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Skin Color ->
+                </td>
+                <td>
+                    <p id="skin">   </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Eye Color ->
+                </td>
+                <td>
+                    <p id="eye"> </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Home World ->
+                </td>
+                <td>
+                    <p id="home">  </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Height ->
+                </td>
+                <td>
+                    <p id="height">  </p>
+                </td>
+            </tr>
+            
+        </table>
+</div>
+</body>
+</html>
